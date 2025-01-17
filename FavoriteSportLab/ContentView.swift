@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+
   @State private var selectedSport: String? = nil
-  
+  @State private var buttonPressed: Bool = false
+
   var body: some View {
     VStack {
       Spacer()
@@ -64,11 +66,19 @@ struct ContentView: View {
       Spacer()
       Button {
         print("Submit button pressed")
+        buttonPressed = true
       } label: {
         Text("Submit")
           .frame(maxWidth: 250, maxHeight: 35)
       }
       .buttonStyle(.borderedProminent)
+      Spacer()
+
+      if buttonPressed {
+        Text("You selected \(selectedSport ?? "None")")
+      } else {
+        Text("")
+      }
       Spacer()
     }
     .padding()
